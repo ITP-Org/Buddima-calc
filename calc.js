@@ -53,22 +53,15 @@ function Operators(nextOperator) {
         calculator.operator = nextOperator; // update if wait for secondOp
         return;
     }
-
-//handling squareroot values
-    if (nextOperator === '√') {
-        const result = Math.sqrt(parseFloat(display));
-        calculator.display = parseFloat(result.toFixed(7));
-        calculator.firstOp = null;   //clear the first operand after square root
-    } else {
+    
         //handle operator inputs
-        if (firstOp === null && !isNaN(inputValue)) { //setting first operand
-            calculator.firstOp = inputValue;
+     if (firstOp === null && !isNaN(inputValue)) { //setting first operand
+         calculator.firstOp = inputValue;
 
-        } else if (operator) {
-            const result = Calculate[operator](firstOp, inputValue);
-            calculator.display = parseFloat(result.toFixed(7));
-            calculator.firstOp = result;
-        }
+    } else if (operator) {
+        const result = Calculate[operator](firstOp, inputValue);
+        calculator.display = parseFloat(result.toFixed(7));
+        calculator.firstOp = result;
     }
     calculator.wait = true;
     calculator.operator = nextOperator;
